@@ -2,6 +2,7 @@ package personal.views;
 
 import personal.controllers.UserController;
 import personal.model.User;
+import personal.views.validator.NameValidator;
 
 import java.util.List;
 import java.util.Scanner;
@@ -70,14 +71,16 @@ public class ViewUser {
         return user;
     }
 
-    private void createUser() {
+    private void createUser() throws Exception {
         User user = getNewUser();
         userController.saveUser(user);
     }
 
-    private User getNewUser() {
+    private User getNewUser() throws Exception {
         String firstName = prompt("Имя: ");
+        new NameValidator(firstName).validate();
         String lastName = prompt("Фамилия: ");
+        new NameValidator(lastName).validate();
         String phone = prompt("Номер телефона: ");
         User user = new User(firstName, lastName, phone);
         return user;
