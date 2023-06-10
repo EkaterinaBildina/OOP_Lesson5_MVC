@@ -47,21 +47,10 @@ public class ViewUser {
     }
 
     private void deleteUser() throws Exception {
-        List<User> listUsers = userController.readAllUsers();
 
-        User needToDelete = getUser();
-
-        for (User delete: listUsers) {
-            if(delete.getId().equals(needToDelete.getId())){
-                listUsers.remove(delete);
-            }
-
-        }
-
-       }
-
-
-
+        User user = getUser();
+        userController.deleteUser(user);
+    }
 
 
     private void updateUser() throws Exception {
@@ -71,12 +60,12 @@ public class ViewUser {
         updatedUser.setId(user.getId());
         User savedUser = userController.updateUser(updatedUser);
         System.out.println(savedUser);
-        
+
     }
 
     private void readList() {
         List<User> listUsers = userController.readAllUsers();
-        for (User user: listUsers) {
+        for (User user : listUsers) {
             System.out.println(user);
         }
     }

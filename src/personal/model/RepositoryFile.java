@@ -28,7 +28,7 @@ public class RepositoryFile implements Repository {
         int max = 0;
         for (User item : users) {
             int id = Integer.parseInt(item.getId());
-            if (max < id){
+            if (max < id) {
                 max = id;
             }
         }
@@ -43,7 +43,7 @@ public class RepositoryFile implements Repository {
 
     private List<String> mapToString(List<User> users) {
         List<String> lines = new ArrayList<>();
-        for (User item: users) {
+        for (User item : users) {
             lines.add(mapper.map(item));
         }
         return lines;
@@ -52,8 +52,8 @@ public class RepositoryFile implements Repository {
     @Override
     public User updateUser(User user) {
         List<User> users = getAllUsers();
-        for (User currentUser: users) {
-            if(currentUser.getId().equals(user.getId())){
+        for (User currentUser : users) {
+            if (currentUser.getId().equals(user.getId())) {
                 currentUser.setFirstName(user.getFirstName());
                 currentUser.setLastName(user.getLastName());
                 currentUser.setPhone(user.getPhone());
@@ -64,14 +64,14 @@ public class RepositoryFile implements Repository {
     }
 
     @Override
-    public User deleteUser(User user) {
+    public void deleteUser(User user) {
         List<User> users = getAllUsers();
-        for (User deleteUser: users) {
-            if(deleteUser.getId().equals(user.getId())){
-                users.remove(user);
+
+        for (User deleteUser : users) {
+            if ((deleteUser.getId()).equals(user.getId())) {
+                users.remove(deleteUser);
             }
         }
-        fileOperation.saveAllLines(mapToString(users));
-        return user;
+      fileOperation.saveAllLines(mapToString(users));
     }
 }

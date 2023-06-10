@@ -8,5 +8,5 @@ public interface Repository {
 
     User updateUser(User user);
 
-    User deleteUser(User user);
+    void deleteUser(User user);
 }

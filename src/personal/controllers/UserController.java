@@ -27,16 +27,16 @@ public class UserController {
         throw new Exception("User not found");
     }
 
-    public List<User> readAllUsers (){
+    public List<User> readAllUsers() {
         return repository.getAllUsers();
     }
 
-    public User updateUser(User user){
-        User updatedUser = repository.updateUser(user);
-        return updatedUser;
+    public User updateUser(User user) {
+        return repository.updateUser(user);
     }
-    public User deleteUser(User user){
-       return repository.deleteUser(user);
+
+    public void deleteUser(User user) {
+        repository.deleteUser(user);
     }
 
 }
