@@ -19,7 +19,7 @@ public class ViewUser {
         Commands com = Commands.NONE;
 
         while (true) {
-            String command = prompt("Введите команду: ");
+            String command = prompt("Введите команду (CREATE / READ / LIST / UPDATE / DELETE / EXIT): ");
             try {
                 com = Commands.valueOf(command.toUpperCase());
                 if (com == Commands.EXIT) return;
@@ -36,12 +36,33 @@ public class ViewUser {
                     case UPDATE:
                         updateUser();
                         break;
+                    case DELETE:
+                        deleteUser();
+                        break;
                 }
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
         }
     }
+
+    private void deleteUser() throws Exception {
+        List<User> listUsers = userController.readAllUsers();
+
+        User needToDelete = getUser();
+
+        for (User delete: listUsers) {
+            if(delete.getId().equals(needToDelete.getId())){
+                listUsers.remove(delete);
+            }
+
+        }
+
+       }
+
+
+
+
 
     private void updateUser() throws Exception {
         readList();

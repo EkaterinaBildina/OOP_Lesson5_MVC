@@ -1,3 +1,4 @@
-1,Ekat,Bildina,5986
-2,eka,bil,222
-3,Sash,Kuk,123
+1,Ekaterina,Bildina,8-985-888-66-45
+2,Anastasia, Leonova, 8-916-146-78-23
+3,Alexander,Kukresh,+375-29-453-47-11
+4,Elena,Kantserys,3752964876243
